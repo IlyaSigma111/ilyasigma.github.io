@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background: url('https://example.com/your-background-image.jpg') no-repeat center center fixed; 
+            background: url('https://example.com/your-background-image.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
             text-align: center;
@@ -19,6 +19,7 @@
         header {
             padding: 50px 0;
             background-color: rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
         }
 
         h1 {
@@ -114,11 +115,40 @@
             transform: scale(1.1);
         }
 
+        /* Меми */
         .meme {
             width: 100%;
             max-width: 600px;
-            margin: 20px 0;
+            margin: 20px auto;
             border-radius: 10px;
+        }
+
+        /* Стили для списка */
+        ul {
+            padding-left: 20px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        /* Улучшение адаптивности */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            nav a {
+                font-size: 1em;
+            }
+
+            .button {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
         }
     </style>
 </head>
