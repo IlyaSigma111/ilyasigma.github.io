@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background: url('https://your-image-url.com/image.jpg') no-repeat center center fixed;
+            background: url('https://example.com/your-background-image.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
             text-align: center;
@@ -18,7 +18,7 @@
         }
 
         header {
-            padding: 50px 0;
+            padding: 50px 20px;
             background-color: rgba(0, 0, 0, 0.5);
             margin-bottom: 30px;
         }
@@ -26,17 +26,29 @@
         h1 {
             font-size: 3em;
             animation: fadeIn 2s ease-in-out 1;
+            line-height: 1.2;
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        h2, h3, p {
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+
+        section {
+            padding: 50px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 20px 0;
+            border-radius: 10px;
+            opacity: 0;
+            animation: fadeInSection 2s ease-in-out forwards;
+        }
+
+        section:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         nav ul {
@@ -60,35 +72,12 @@
             background: rgba(0, 0, 0, 0.7);
             border-radius: 5px;
             transition: background-color 0.3s;
+            line-height: 1.5;
         }
 
         nav a:hover {
             background: rgba(255, 255, 255, 0.6);
             color: black;
-        }
-
-        section {
-            padding: 50px 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin: 20px 0;
-            border-radius: 10px;
-            opacity: 0;
-            animation: fadeInSection 2s ease-in-out forwards;
-        }
-
-        section:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        @keyframes fadeInSection {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         footer {
@@ -109,6 +98,7 @@
             border-radius: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, background-color 0.3s ease;
+            line-height: 1.5;
         }
 
         .button:hover {
@@ -117,6 +107,14 @@
             color: white;
         }
 
+        .joke {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #FF4081;
+            margin-top: 20px;
+        }
+
+        /* Меми */
         .meme {
             width: 100%;
             max-width: 600px;
@@ -124,17 +122,7 @@
             border-radius: 10px;
         }
 
-        ul {
-            padding-left: 20px;
-            text-align: left;
-            margin-top: 20px;
-        }
-
-        li {
-            margin: 10px 0;
-            font-size: 1.1em;
-        }
-
+        /* Улучшение адаптивности */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5em;
@@ -177,10 +165,8 @@
             <li><a href="https://www.google.com/search?q=что+делать+если+ничего+не+хочется" target="_blank" class="button">Что делать, если ничего не хочется?</a></li>
         </ul>
 
-        <h3>Мемы для настроения:</h3>
-        <img src="https://i.pinimg.com/originals/3c/f1/6c/3cf16c270322c35a02d76c9b7758c788.jpg" alt="Мем 1" class="meme">
-        <img src="https://i.pinimg.com/originals/01/62/91/016291fb8b87bbf7eb18a7c1c6d69d9a.jpg" alt="Мем 2" class="meme">
-        <img src="https://i.pinimg.com/originals/5e/2f/6b/5e2f6b76a05c8fe02a453e75d9fa70c4.jpg" alt="Мем 3" class="meme">
+        <h3>Шутки для настроения:</h3>
+        <div id="joke-container" class="joke"></div> <!-- Контейнер для шутки -->
     </section>
 
     <section id="services">
@@ -191,9 +177,8 @@
             <li>Готовьте вкусняшки для всех!</li>
         </ul>
 
-        <h3>Смешные мемы, чтобы расслабиться:</h3>
-        <img src="https://i.pinimg.com/originals/c9/36/6e/c9366e4104c289bcbf7f06a1e76c9ea7.jpg" alt="Мем 4" class="meme">
-        <img src="https://i.pinimg.com/originals/4a/8b/71/4a8b71d245a8c54d445f2db2ff6e9b9d.jpg" alt="Мем 5" class="meme">
+        <h3>Смешные шутки, чтобы расслабиться:</h3>
+        <div id="joke-container-2" class="joke"></div> <!-- Второй контейнер для другой шутки -->
     </section>
 
     <section id="contact">
@@ -206,5 +191,31 @@
     <footer>
         <p>&copy; 2024 Скибиди. Гойдаааа!!!.</p>
     </footer>
+
+    <script>
+        // Массив с шутками
+        const jokes = [
+            "Почему программисты не боятся темноты? Потому что они всегда в поиске bugs!",
+            "Встретились два потока. Один говорит: ‘Ты что, deadlock?’",
+            "Я не люблю, когда мне говорят 'Пока!' — ведь потом приходится снова переписывать код.",
+            "Как стать программистом? Просто добавь к каждой проблеме свой solution.",
+            "Зачем студенты покупают книги? Чтобы просто добавить их в коллекцию ошибок."
+        ];
+
+        // Функция для вывода случайной шутки
+        function showRandomJoke(containerId) {
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            document.getElementById(containerId).textContent = randomJoke;
+        }
+
+        // Показать шутки на странице
+        window.onload = function() {
+            showRandomJoke("joke-container");
+            showRandomJoke("joke-container-2");
+        };
+    </script>
+</body>
+</html>
+
 </body>
 </html>
