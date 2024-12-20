@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Простой ВК - Стиль</title>
+    <title>Простой ВК - Стиль с Вкладками</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,11 +13,11 @@
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Новости</a></li>
-                <li><a href="#">Мессенджер</a></li>
-                <li><a href="#">Группы</a></li>
-                <li><a href="#">Мой профиль</a></li>
+                <li><a href="#" class="tablink" onclick="openTab(event, 'home')">Главная</a></li>
+                <li><a href="#" class="tablink" onclick="openTab(event, 'news')">Новости</a></li>
+                <li><a href="#" class="tablink" onclick="openTab(event, 'messages')">Мессенджер</a></li>
+                <li><a href="#" class="tablink" onclick="openTab(event, 'groups')">Группы</a></li>
+                <li><a href="#" class="tablink" onclick="openTab(event, 'profile')">Мой профиль</a></li>
             </ul>
         </nav>
     </header>
@@ -33,12 +33,29 @@
         </section>
 
         <section class="main-feed">
-            <h2>Новости</h2>
-            <div class="post">
-                <p>Это ваш первый пост на ВКонтакте!</p>
+            <div id="home" class="tabcontent">
+                <h2>Главная</h2>
+                <p>Добро пожаловать на главную страницу ВКонтакте!</p>
             </div>
-            <div class="post">
-                <p>Другой пост на вашей ленте.</p>
+
+            <div id="news" class="tabcontent">
+                <h2>Новости</h2>
+                <p>Здесь будут отображаться новости.</p>
+            </div>
+
+            <div id="messages" class="tabcontent">
+                <h2>Мессенджер</h2>
+                <p>Тут будет ваша переписка.</p>
+            </div>
+
+            <div id="groups" class="tabcontent">
+                <h2>Группы</h2>
+                <p>Ваши группы и паблики.</p>
+            </div>
+
+            <div id="profile" class="tabcontent">
+                <h2>Мой профиль</h2>
+                <p>Информация о вашем профиле.</p>
             </div>
         </section>
 
@@ -56,5 +73,30 @@
     <footer class="footer">
         <p>© 2024 ВКонтакте</p>
     </footer>
+
+    <!-- Вставляем JavaScript прямо внизу страницы -->
+    <script>
+        // Функция для открытия вкладки
+        function openTab(event, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.classList.add("active");
+        }
+
+        // Открытие вкладки по умолчанию
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".tablink").click();
+        });
+    </script>
 </body>
 </html>
