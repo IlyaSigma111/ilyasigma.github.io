@@ -1,9 +1,11 @@
+/* Сброс стандартных отступов и рамок */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Устанавливаем высоту для всего тела страницы */
 html, body {
     height: 100%;
     font-family: Arial, sans-serif;
@@ -11,12 +13,15 @@ html, body {
     color: #333;
 }
 
+/* Основной контейнер для страницы */
 body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100%;
 }
 
+/* Заголовок страницы */
 header {
     background-color: #4680c2;
     padding: 10px 20px;
@@ -26,6 +31,7 @@ header {
     align-items: center;
 }
 
+/* Логотип и навигация */
 header .logo a {
     text-decoration: none;
     color: white;
@@ -53,14 +59,16 @@ header .navbar ul li a:hover {
     text-decoration: underline;
 }
 
+/* Основное содержимое страницы */
 main {
     display: flex;
-    flex: 1;  /* Чтобы основная часть занимала весь экран */
+    flex: 1;
     justify-content: space-between;
     padding: 20px;
     overflow: hidden;
 }
 
+/* Левая боковая панель */
 .left-sidebar, .right-sidebar {
     width: 20%;
     background-color: #ffffff;
@@ -76,6 +84,7 @@ main {
     margin-bottom: 10px;
 }
 
+/* Основной контент */
 .main-feed {
     width: 55%;
     background-color: #ffffff;
@@ -86,6 +95,7 @@ main {
     overflow-y: auto;
 }
 
+/* Вкладки */
 .tabcontent {
     display: none;
 }
@@ -99,11 +109,13 @@ main {
     font-size: 16px;
 }
 
+/* Активная вкладка */
 .navbar ul li a.active {
     font-weight: bold;
     text-decoration: underline;
 }
 
+/* Подвал страницы */
 footer {
     background-color: #4680c2;
     text-align: center;
