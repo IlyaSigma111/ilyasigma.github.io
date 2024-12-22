@@ -1,103 +1,109 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Простой ВК - Стиль с Вкладками</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключаем внешний CSS файл -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Социальная сеть</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <a href="#">ВКонтакте</a>
+
+  <header>
+    <div class="logo">Социальная Сеть</div>
+    <nav>
+      <a href="#">Главная</a>
+      <a href="#">Друзья</a>
+      <a href="#">Группы</a>
+      <a href="#">Сообщения</a>
+      <a href="#">Профиль</a>
+      <button id="loginButton">Войти</button>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <aside class="sidebar">
+        <h3>Навигация</h3>
+        <ul>
+          <li><a href="#">Лента новостей</a></li>
+          <li><a href="#">Друзья</a></li>
+          <li><a href="#">Сообщения</a></li>
+          <li><a href="#">Группы</a></li>
+        </ul>
+      </aside>
+
+      <section class="feed">
+        <div class="profile-section">
+          <h2>Мой профиль</h2>
+          <div class="profile-card" id="profileCard">
+            <img src="https://via.placeholder.com/150" alt="Аватар" class="avatar">
+            <div class="profile-info">
+              <h3 id="userName">Имя Фамилия</h3>
+              <p id="userBio">Краткая информация о пользователе</p>
+              <button id="editProfileButton">Редактировать профиль</button>
+            </div>
+          </div>
         </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#" class="tablink" onclick="openTab(event, 'home')">Главная</a></li>
-                <li><a href="#" class="tablink" onclick="openTab(event, 'news')">Новости</a></li>
-                <li><a href="#" class="tablink" onclick="openTab(event, 'messages')">Мессенджер</a></li>
-                <li><a href="#" class="tablink" onclick="openTab(event, 'groups')">Группы</a></li>
-                <li><a href="#" class="tablink" onclick="openTab(event, 'profile')">Мой профиль</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="content">
-        <section class="left-sidebar">
-            <h3>Друзья</h3>
-            <ul>
-                <li><a href="#">Дружба 1</a></li>
-                <li><a href="#">Дружба 2</a></li>
-                <li><a href="#">Дружба 3</a></li>
-            </ul>
-        </section>
+        <div class="posts">
+          <h3>Новости</h3>
+          <div class="post">
+            <p><strong>Иван Иванов:</strong> Привет, друзья!</p>
+            <button>Понравилось</button>
+            <button>Комментировать</button>
+          </div>
+          <div class="post">
+            <p><strong>Мария Петрова:</strong> Как ваши дела?</p>
+            <button>Понравилось</button>
+            <button>Комментировать</button>
+          </div>
+        </div>
+      </section>
+      
+      <aside class="right-sidebar">
+        <div class="create-group">
+          <h3>Создать группу</h3>
+          <form>
+            <input type="text" placeholder="Название группы">
+            <button type="submit">Создать</button>
+          </form>
+        </div>
+      </aside>
+    </div>
 
-        <section class="main-feed">
-            <!-- Вкладки -->
-            <div id="home" class="tabcontent">
-                <h2>Главная</h2>
-                <p>Добро пожаловать на главную страницу ВКонтакте!</p>
-            </div>
+    <!-- Форма для регистрации -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <h2>Регистрация</h2>
+        <form id="registerForm">
+          <input type="text" id="registerName" placeholder="Имя" required>
+          <input type="text" id="registerSurname" placeholder="Фамилия" required>
+          <input type="email" id="registerEmail" placeholder="Email" required>
+          <input type="password" id="registerPassword" placeholder="Пароль" required>
+          <button type="submit">Зарегистрироваться</button>
+        </form>
+        <button class="close-btn" onclick="closeModal('registerModal')">Закрыть</button>
+      </div>
+    </div>
 
-            <div id="news" class="tabcontent">
-                <h2>Новости</h2>
-                <p>Здесь будут отображаться новости.</p>
-            </div>
+    <!-- Форма для редактирования профиля -->
+    <div id="editProfileModal" class="modal">
+      <div class="modal-content">
+        <h2>Редактировать профиль</h2>
+        <form id="editProfileForm">
+          <input type="text" id="editUserName" placeholder="Имя" required>
+          <input type="text" id="editUserBio" placeholder="О себе" required>
+          <button type="submit">Сохранить</button>
+        </form>
+        <button class="close-btn" onclick="closeModal('editProfileModal')">Закрыть</button>
+      </div>
+    </div>
+  </main>
 
-            <div id="messages" class="tabcontent">
-                <h2>Мессенджер</h2>
-                <p>Тут будет ваша переписка.</p>
-            </div>
+  <footer>
+    <p>© 2024 Социальная сеть</p>
+  </footer>
 
-            <div id="groups" class="tabcontent">
-                <h2>Группы</h2>
-                <p>Ваши группы и паблики.</p>
-            </div>
-
-            <div id="profile" class="tabcontent">
-                <h2>Мой профиль</h2>
-                <p>Информация о вашем профиле.</p>
-            </div>
-        </section>
-
-        <section class="right-sidebar">
-            <h3>Реклама</h3>
-            <div class="advert">
-                <p>Реклама 1</p>
-            </div>
-            <div class="advert">
-                <p>Реклама 2</p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>© 2024 ВКонтакте</p>
-    </footer>
-
-    <!-- Вставляем JavaScript прямо внизу страницы -->
-    <script>
-        // Функция для открытия вкладки
-        function openTab(event, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-
-            document.getElementById(tabName).style.display = "block";
-            event.currentTarget.classList.add("active");
-        }
-
-        // Открытие вкладки по умолчанию
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector(".tablink").click();
-        });
-    </script>
 </body>
 </html>
